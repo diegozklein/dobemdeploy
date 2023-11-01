@@ -1,0 +1,19 @@
+.inputIcon {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+        width: 100%;
+  }
+
+  .checkbox{
+    margin-bottom: 0.4rem;
+  }

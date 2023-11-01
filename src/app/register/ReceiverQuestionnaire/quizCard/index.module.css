@@ -1,0 +1,30 @@
+.card,
+.error {
+  width: 100%;
+  display: flex;
+  text-align: justify;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid #1c6e8c20;
+  background-color: #1c6e8c20;
+  box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.card {
+  border: 1px solid #1c6e8c20;
+  background-color: #1c6e8c20;
+}
+
+.error {
+  border: 1px solid #ff000020;
+  background-color: #ff000020;
+}
+
+@media (max-width: 500px) {
+  .card,
+  .error {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+}

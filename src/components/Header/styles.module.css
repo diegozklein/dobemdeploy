@@ -1,0 +1,37 @@
+.header {
+    width: 100%;
+    height: 5rem;
+    background-color: #ffffff;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+  }
+  
+  .leftArrow {
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    background-color: transparent;
+  }
+  
+  .doBem {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FDE74C;
+    margin-right: 1rem;
+  }
+  
+  .doBemLogo {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: auto;
+  }
+

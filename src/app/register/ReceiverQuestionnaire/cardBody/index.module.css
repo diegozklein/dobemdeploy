@@ -1,0 +1,32 @@
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.question {
+  height: fit-content;
+  width: 100%;
+  margin: 1rem 0rem;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.numberInput {
+  margin: 1rem 0 0.5rem 0;
+}

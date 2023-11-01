@@ -1,0 +1,72 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  padding: 10px 20px;
+  margin: 10px 10px;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.labelContainer {
+  margin-right: 1rem;
+}
+
+.inputFieldContainer {
+  flex-grow: 1;
+}
+
+.header {
+  background-color: #0abab5;
+  padding: 10px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  padding-top: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.checkMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  height: 10rem;
+  margin: 5rem;
+}
+
+.close {
+  cursor: pointer;
+  border: 2px solid white;
+  padding: 0.125rem;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  text-align: center;
+}

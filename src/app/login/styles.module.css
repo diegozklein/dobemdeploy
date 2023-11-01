@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 7rem);
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 50%;
+  max-width: 25rem;
+}
+
+.logo {
+  width: 11rem;
+  height: 11rem;
+  margin-bottom: 4rem;
+}
+
+.inputFields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.error {
+  color: #0ABAB5;
+  font-size: 0.9rem;
+  color: rgb(228, 23, 23);
+}
+
+.register {
+  color: #0ABAB5;
+  text-decoration: underline;
+  margin-top: 1.5rem;
+}

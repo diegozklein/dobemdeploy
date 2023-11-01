@@ -1,0 +1,224 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Address {
+  id     String @id @default(uuid())
+  zip    String @db.VarChar(255)
+  city   String @db.VarChar(255)
+  state  String @db.VarChar(255)
+  number Int
+  User   User[]
+}
+
+model Company_size {
+  id          String @id @default(uuid())
+  description String @db.VarChar(255)
+  size        Int    @unique
+  User        User[]
+}
+
+model User {
+  id              String    @id @default(uuid())
+  name            String    @db.VarChar(255)
+  phone_number    String    @unique @db.VarChar(255)
+  email           String    @unique @db.VarChar(255)
+  password        String    @db.VarChar(255)
+  fk_address      String
+  cpf             String?   @unique @db.VarChar(255)
+  cnpj            String?   @unique @db.VarChar(255)
+  birth_date      DateTime?
+  creation_date   DateTime  @default(now())
+  fk_company_size String?
+
+  company_size Company_size?  @relation(fields: [fk_company_size], references: [id])
+  address      Address        @relation(fields: [fk_address], references: [id])
+  Donor        Donor[]
+  Intermediary Intermediary[]
+  Receiver     Receiver[]
+  role         Role           @default(DonorPF)
+}
+
+model Donor {
+  fk_user       String          @id
+  user          User            @relation(fields: [fk_user], references: [id])
+  MoneyDonation MoneyDonation[]
+}
+
+model Intermediary {
+  fk_user       String       @id
+  company_type  Company_type
+  donate_profit Boolean
+  donate_icms   Boolean
+  user          User         @relation(fields: [fk_user], references: [id])
+  Donations     Donation[]
+}
+
+model Receiver {
+  fk_user  String     @id
+  user     User       @relation(fields: [fk_user], references: [id])
+  Donation Donation[]
+  fk_quiz  String
+  quiz     Quiz       @relation(fields: [fk_quiz], references: [id])
+}
+
+model Quiz {
+  id              String         @id @default(uuid()) @map("id") // Assuming UUID is stored as a string
+  works           Boolean        @map("works")
+  worksCurrently  WorkType       @map("works_currently")
+  houseExpenses   Int            @map("house_expenses")
+  supportFamily   Int            @map("support_family")
+  independence    Int            @map("independence")
+  getExperience   Int            @map("get_experience")
+  payStudies      Int            @map("pay_studies")
+  workHours       WorkHours      @map("work_hours")
+  familyIncome    Income         @map("family_income")
+  houseType       HouseType      @map("house_type")
+  houseResidents  HouseResidents @map("house_residents")
+  children        Int            @map("children")
+  microComputers  ItemAmount     @map("have_micro_computers")
+  vehicles        ItemAmount     @map("have_vehicles")
+  washerMachines  ItemAmount     @map("have_washer_machines")
+  refrigerators   ItemAmount     @map("have_refrigerators")
+  notebooks       ItemAmount     @map("have_notebooks")
+  cellphones      ItemAmount     @map("have_cellphones")
+  internetAccess  Boolean        @map("have_internet_access")
+  cableTvAccess   Boolean        @map("have_cable_tv_access")
+  housekeeper     Boolean        @map("have_housekeeper")
+  reason          String         @map("reason_recieve_help") @db.VarChar(255)
+  houseLocation   HouseLocation  @map("house_location")
+  alimony         Float          @map("pays_alimony")
+  receivedAlimony Float          @map("receives_alimony")
+  Receiver        Receiver[]
+}
+
+enum Company_type {
+  SuperMercado
+  Padaria
+  Restaurante
+}
+
+enum ItemAmount {
+  ZERO
+  ONE
+  TWO
+  THREE_PLUS
+}
+
+enum WorkType {
+  AGRICULTURE
+  INDUSTRY_OR_CONSTRUCTION
+  SERVICES
+  PUBLIC_AGENT
+  INFORMAL
+  INFORMAL_HOME_OFFICE
+  DOMESTICS_SERVICE
+  HOME_WITHOUT_PAYMENT
+  OTHER
+  UNEMPLOYED
+}
+
+enum WorkHours {
+  LESS_THAN_10
+  BETWEEN_11_AND_20
+  BETWEEN_21_AND_30
+  BETWEEN_31_AND_44
+}
+
+enum Income {
+  NOTHING
+  LESS_THAN_1
+  BETWEEN_1_AND_3
+  BETWEEN_3_AND_6
+  BETWEEN_6_AND_9
+  BETWEEN_9_AND_12
+  BETWEEN_12_AND_15
+  MORE_THAN_15
+}
+
+enum HouseResidents {
+  ALONE
+  ONE_TO_THREE
+  FOUR_TO_SEVEN
+  EIGHT_TO_TEN
+  MORE_THAN_TEN
+}
+
+enum HouseLocation {
+  RURAL
+  URBAN
+  INDIGENOUS
+}
+
+enum Role {
+  DonorPF
+  DonorPJ
+  Intermediary
+  Receiver
+}
+
+enum HouseType {
+  OWN
+  RENTED
+  ASSIGNED
+}
+
+model MoneyDonation {
+  id            String       @id @default(uuid())
+  donorId       String
+  amount        Float
+  creation_date DateTime     @default(now())
+  payment_type  PaymentType? @default(CREDIT_CARD)
+  Donor         Donor        @relation(fields: [donorId], references: [fk_user])
+}
+
+enum PaymentType {
+  CREDIT_CARD
+  DEBIT_CARD
+  PIX
+}
+
+enum DonationStatus {
+  DECLINED
+  PENDING
+  ACCEPTED
+  READY
+  COMPLETED
+  CANCELED
+  RESCHEDULED
+}
+
+model Donation {
+  id              String         @id @default(uuid())
+  fk_intermediary String
+  fk_receiver     String
+  code            String         @unique @db.VarChar(255)
+  status          DonationStatus
+  delivery_date   DateTime?
+  quantity        Int            @map("smallint")
+  food_type       String
+  amount          Float          @default(0)
+
+  Intermediary Intermediary @relation(fields: [fk_intermediary], references: [fk_user])
+  Receiver     Receiver     @relation(fields: [fk_receiver], references: [fk_user])
+}
+
+model DoBemAccount {
+  id      String @id @default(uuid())
+  balance Float  @default(0)
+}
+
+model DefaultOrder {
+  id           String       @id @default(uuid())
+  amount       Float
+  company_type Company_type @unique
+  food_type    String       @db.VarChar(255)
+}

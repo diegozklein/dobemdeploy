@@ -1,0 +1,16 @@
+.textArea {
+    box-sizing: border-box;
+    height: 2.25rem;
+    border-color: transparent;
+    width: 100%;
+    border: 0.125rem solid #0abab5;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    background-color: transparent;
+    color: black;
+    resize: none;
+    min-height: 10rem;
+    outline: 0;
+    font-family: inherit;
+    padding: 0.5rem;
+}

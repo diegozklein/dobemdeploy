@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.5rem;
+  width: 100%
+}
+
+.paymentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  height: 40%;
+  max-width: 25rem;
+  gap: 1rem;
+  border-radius: 0.25rem;
+}
+
+.payment h3 {
+  text-align: center;
+  font-weight: semi-bold;
+}
+
+.inputFields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.button {
+  margin: 2rem;
+  width: 100%;
+  max-width: 25rem;
+}
+
+.secondary {
+  background-color: #fde74c;
+}
+
+.donationText {
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem;
+  font-weight: 500;
+  width: 80%;
+  max-width: 25rem;
+  color: #274156;
+  font-weight: 600;
+}
+
+.error {
+  padding-top: 0.5rem;
+  font-weight: semi-bold;
+  font-size: 0.9rem;
+}
+
+.close {
+  cursor: pointer;
+  border: 2px solid #2b2b2b;
+  padding: 0.125rem;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.closeContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeContainer > img {
+  cursor: pointer;
+}
