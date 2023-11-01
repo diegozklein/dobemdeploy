@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run start:prisma && next build",
+    "build": "npm run start:prisma && npx prisma generate && next build",
     "start": "next start",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --cache --max-warnings=0",
     "lint:fix": "eslint src/**/*.ts{,x} --fix",
